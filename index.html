@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="CSS/styles.css" rel="stylesheet">
+    <script src="JS/scripts.js"></script>
+    <title>Forms</title>
+</head>
+<body>
+<div id="container-overlay"></div>
+<div class="container">
+    <div class="intro_text">
+        <h1>Forms Creation Engine</h1>
+    </div>
+    <div class="view_1_start">
+        <div class="start_buttons">
+            <button class="main_button" onclick="add(); startTimer()">Добавить</button>
+            <button class="main_button">Удалить</button>
+        </div>
+        <div class="selection_area"></div>
+    </div>
+    <div class="view_2_main" id="main">
+        <div class="close" onclick='close()'>&#10060;</div>
+        <h4>Время:</h4><div id="time"></div>
+        <h5>Кол-во:</h5><div id="quantity"></div>
+        <form>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <p>Text</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <p>Pass</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <p>Radio</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <p>Textarea</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>
+                    <p>Select</p>
+                </td>
+            </tr>
+        </table>
+            <label for="form_name">Название</label>
+            <input id="form_name" type="text">
+            <div class="creation_buttons">
+            <button class="minor_button" id="restart">Сбросить</button>
+            <button class="minor_button" id="create">Создать</button>
+            </div>
+        </form>
+    </div>
+    <div class="view_2_secondary">
+        <form>
+            <div><label for="text">Text</label><input id="text" type="text"></div>
+            <div><label for="pass">Password</label><input id="pass" type="password" required></div>
+            <div>
+                <input type="radio" name="gender" value="First">
+                <input type="radio" name="gender" value="Second">
+                <input type="radio" name="gender" value="Third">
+            </div>
+            <div>
+            <label for="text_area"></label><input id="text_area">
+            </div>
+            <div>
+            <select>
+                <option>Value 1</option>
+                <option>Value 2</option>
+            </select>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
