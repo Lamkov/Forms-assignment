@@ -14,79 +14,79 @@
     </div>
     <div class="view_1_start">
         <div class="start_buttons">
-            <button class="main_button" onclick="add(); startTimer()">Добавить</button>
+            <button class="main_button" onclick="openModal()">Добавить</button>
             <button class="main_button">Удалить</button>
         </div>
-        <div class="selection_area"></div>
+        <div class="selection_area" id="selection_area"></div>
     </div>
     <div class="view_2_main" id="main">
-        <div class="close" onclick='close()'>&#10060;</div>
+        <button class="close" onclick="closeModal(); return false">&#10060;</button>
         <h4>Время:</h4><div id="time"></div>
         <h5>Кол-во:</h5><div id="quantity"></div>
-        <form>
-        <table>
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <p>Text</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <p>Pass</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <p>Radio</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <p>Textarea</p>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <p>Select</p>
-                </td>
-            </tr>
-        </table>
+        <form action="" id="basic_form">
+			<table>
+				<tr>
+					<td>
+						<input class="checkbox_count" onchange="checkboxes()" id="checkbox1" type="checkbox">
+					</td>
+					<td>
+						<p>Text</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="checkbox_count" onchange="checkboxes()" id="checkbox2" type="checkbox">
+					</td>
+					<td>
+						<p>Pass</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="checkbox_count" onchange="checkboxes()" id="checkbox3" type="checkbox">
+					</td>
+					<td>
+						<p>Radio</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="checkbox_count" onchange="checkboxes()" id="checkbox4" type="checkbox">
+					</td>
+					<td>
+						<p>Textarea</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="checkbox_count" onchange="checkboxes()" id="checkbox5" type="checkbox">
+					</td>
+					<td>
+						<p>Select</p>
+					</td>
+				</tr>
+			</table>
             <label for="form_name">Название</label>
             <input id="form_name" type="text">
             <div class="creation_buttons">
-            <button class="minor_button" id="restart">Сбросить</button>
-            <button class="minor_button" id="create">Создать</button>
+            <button type="button" class="minor_button" id="restart" onclick="reset(); checkboxes(); return false">Сбросить</button>
+            <button type="button" class="minor_button" id="create" onclick="creator(); return false">Создать</button>
             </div>
         </form>
     </div>
     <div class="view_2_secondary">
         <form>
-            <div><label for="text">Text</label><input id="text" type="text"></div>
-            <div><label for="pass">Password</label><input id="pass" type="password" required></div>
-            <div>
+            <div id="form1"><label for="text">Text</label><input id="text" type="text"></div>
+            <div id="form2"><label for="pass">Password</label><input id="pass" type="password" required></div>
+            <div id="form3">
                 <input type="radio" name="gender" value="First">
                 <input type="radio" name="gender" value="Second">
                 <input type="radio" name="gender" value="Third">
             </div>
-            <div>
+            <div id="form4">
             <label for="text_area"></label><input id="text_area">
             </div>
-            <div>
+            <div id="form5">
             <select>
                 <option>Value 1</option>
                 <option>Value 2</option>

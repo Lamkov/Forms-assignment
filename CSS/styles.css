@@ -85,9 +85,17 @@
     width: 300px;
     padding: 10px;
     z-index: 3;
+	visibility: hidden;
     opacity:0;
-    transition: 1s;
+    transition: opacity 1s linear;
+	z-index: -1;
 }
+.view_2_main.open {
+	opacity: 1;
+	visibility: visible;
+	z-index: 9999;	
+}
+
 .view_2_main table p {
     margin: 0;
 }
@@ -119,7 +127,7 @@
     font-size: 24px;
     z-index: 2;
     text-align: center;
-    line-height: 38px;
+    line-height: 36px;
     cursor: pointer;
 }
 #time {
