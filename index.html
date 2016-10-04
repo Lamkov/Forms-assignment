@@ -15,7 +15,7 @@
     <div class="view_1_start">
         <div class="start_buttons">
             <button class="main_button" onclick="openModal()">Добавить</button>
-            <button class="main_button">Удалить</button>
+            <button class="main_button" onclick="cleaner()">Удалить</button>
         </div>
         <div class="selection_area" id="selection_area"></div>
     </div>
@@ -67,7 +67,7 @@
 				</tr>
 			</table>
             <label for="form_name">Название</label>
-            <input id="form_name" type="text">
+            <input id="form_name" type="text" pattern=".{6,}" required>
             <div class="creation_buttons">
             <button type="button" class="minor_button" id="restart" onclick="reset(); checkboxes(); return false">Сбросить</button>
             <button type="button" class="minor_button" id="create" onclick="creator(); return false">Создать</button>
@@ -79,12 +79,14 @@
             <div id="form1"><label for="text">Text</label><input id="text" type="text"></div>
             <div id="form2"><label for="pass">Password</label><input id="pass" type="password" required></div>
             <div id="form3">
-                <input type="radio" name="gender" value="First">
-                <input type="radio" name="gender" value="Second">
-                <input type="radio" name="gender" value="Third">
+                <form>
+                    <input type="radio" name="type" value="male" checked> First<br>
+                    <input type="radio" name="type" value="female"> Second<br>
+                    <input type="radio" name="type" value="other"> Third
+                </form>
             </div>
             <div id="form4">
-            <label for="text_area"></label><input id="text_area">
+            <label for="text_area">Textarea</label><textarea id="text_area" rows="5" cols="30"></textarea>
             </div>
             <div id="form5">
             <select>

@@ -57,17 +57,55 @@ function reset() {
 }
 
 function creator() {
-	// TODO: do somethink
-    var i;
-    var selection = document.getElementById("checkbox" + i);
-    var selected = document.getElementById("form" + i);
+    var formName = document.getElementById("form_name").value;
+    var validationInfo = /@+#+|#+@+/;
+    if(validationInfo.test(formName)){
+	var inputElm = document.getElementsByClassName("checkbox_count");
+	for (var i=0; i<inputElm.length; i++) {
+		if (inputElm[i].type === "checkbox" && inputElm[i].checked === true){
+			var chosen = inputElm[i].id;
+			switch (chosen) {
+				case "checkbox1":
+					var First = document.getElementById("form1").cloneNode(true);
+					document.getElementById("selection_area").appendChild(First);
+                    break;
+				case "checkbox2":
+					var Second = document.getElementById("form2").cloneNode(true);
+					document.getElementById("selection_area").appendChild(Second);
+                    break;
+				case "checkbox3":
+					var Third = document.getElementById("form3").cloneNode(true);
+					document.getElementById("selection_area").appendChild(Third);
+                    break;
+				case "checkbox4":
+					var Fouth = document.getElementById("form4").cloneNode(true);
+					document.getElementById("selection_area").appendChild(Fouth);
+                    break;
+				case "checkbox5":
+					var Fifth = document.getElementById("form5").cloneNode(true);
+					document.getElementById("selection_area").appendChild(Fifth);
+                    break;
+				default:
 
-    var cln = selected.cloneNode(true);
-    document.getElementById("selection_area").appendChild(cln);
+			}
+		}
+	}
+    closeModal();
+    reset();
+    }
+    else {
+        alert("any name, # and @ are obligatory");
+    }
 }
+function cleaner(){
+    document.getElementById("selection_area").innerHTML = ""
+    }
 
+/*var selection = document.getElementById("checkbox" + i);
+ var selected = document.getElementById("form" + i);
 
-
+ var cln = selected.cloneNode(true);
+ document.getElementById("selection_area").appendChild(cln);*/
 /*
 var copy = document.querySelector("myList2").lastChild;
 var cln = copy.cloneNode(true);

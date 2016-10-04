@@ -71,6 +71,15 @@
     -webkit-border-radius:5px;
     border-radius:5px;
 }
+.selection_area div {
+    margin: 10px;
+}
+.selection_area div label {
+    margin-right: 10px;
+}
+.selection_area div textarea, .selection_area div input {
+    display: block;
+}
 .view_2_main {
     margin: 0 auto;
     position: absolute;
