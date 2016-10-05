@@ -16,6 +16,13 @@ function closeModal() {
 	clearInterval(newInterval);
 }
 
+window.onload = function(){
+    document.getElementById('container-overlay').onclick=function(){
+        closeModal();
+    }
+}
+
+
 function startTimer() {
 	var duration = 60 * 5, 
 		timer = duration, minutes, seconds;		
@@ -55,12 +62,18 @@ function reset() {
     document.getElementById("basic_form").reset();
 
 }
-
+function toggle() {
+    var allChecked = document.getElementsByClassName("checkbox_count");
+    for (i = 0; i < allChecked.length; i++){
+        allChecked[i].checked = true ;
+}
+}
 function creator() {
     var formName = document.getElementById("form_name").value;
-    var validationInfo = /@+#+|#+@+/;
+    var inputElm = document.getElementsByClassName("checkbox_count");
+    var isChecked = false;
+    var validationInfo = /[@#]+/;
     if(validationInfo.test(formName)){
-	var inputElm = document.getElementsByClassName("checkbox_count");
 	for (var i=0; i<inputElm.length; i++) {
 		if (inputElm[i].type === "checkbox" && inputElm[i].checked === true){
 			var chosen = inputElm[i].id;
@@ -88,38 +101,18 @@ function creator() {
 				default:
 
 			}
+
 		}
 	}
     closeModal();
     reset();
+    checkboxes();
     }
     else {
-        alert("any name, # and @ are obligatory");
+        alert("any letters, # and @ are obligatory");
     }
 }
 function cleaner(){
     document.getElementById("selection_area").innerHTML = ""
     }
 
-/*var selection = document.getElementById("checkbox" + i);
- var selected = document.getElementById("form" + i);
-
- var cln = selected.cloneNode(true);
- document.getElementById("selection_area").appendChild(cln);*/
-/*
-var copy = document.querySelector("myList2").lastChild;
-var cln = copy.cloneNode(true);
-document.getElementById("myList1").appendChild(cln);
-
-function copy() {
-	var inputs = document.getElementsByClassName("checker");
-
-	for (var i = usersArray.length - 1; i >= 0; i--) {
-		if(inputs[i].checked) {
-			usersArray.splice(i, 1);
-		}
-	}
-
-	drawTable();
-}
-*/
