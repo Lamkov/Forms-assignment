@@ -145,3 +145,16 @@
 .view_2_secondary {
     display: none;
 }
+
+form label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+form label:hover {
+	cursor: pointer;
+}
+
+#formName {
+	padding: 0 20px;
+}

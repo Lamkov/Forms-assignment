@@ -15,69 +15,44 @@
     <div class="view_1_start">
         <div class="start_buttons">
             <button class="main_button" onclick="openModal()">Добавить</button>
-            <button class="main_button" onclick="cleaner()">Удалить</button>
+            <button class="main_button" onclick="cleaner(); clearname()">Удалить</button>
         </div>
+		<h2 id="formName"></h2>
         <div class="selection_area" id="selection_area"></div>
     </div>
     <div class="view_2_main" id="main">
         <button class="close" onclick="closeModal(); return false">&#10060;</button>
         <h4>Время:</h4><div id="time"></div>
-        <h5>Кол-во:</h5><div id="quantity"></div>
+        <h5>Кол-во: <span id="quantity"></span></h5>
         <form action="" id="basic_form">
-			<table>
-				<tr>
-					<td>
-						<input class="checkbox_count" onchange="checkboxes()" id="checkbox1" type="checkbox">
-					</td>
-					<td>
-						<p>Text</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input class="checkbox_count" onchange="checkboxes()" id="checkbox2" type="checkbox">
-					</td>
-					<td>
-						<p>Pass</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input class="checkbox_count" onchange="checkboxes()" id="checkbox3" type="checkbox">
-					</td>
-					<td>
-						<p>Radio</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input class="checkbox_count" onchange="checkboxes()" id="checkbox4" type="checkbox">
-					</td>
-					<td>
-						<p>Textarea</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<input class="checkbox_count" onchange="checkboxes()" id="checkbox5" type="checkbox">
-					</td>
-					<td>
-						<p>Select</p>
-					</td>
-				</tr>
-                <tr>
-                    <td>
-                        <input onchange="toggle(); checkboxes()" id="checkbox6" type="checkbox">
-                    </td>
-                    <td>
-                        <p>All</p>
-                    </td>
-                </tr>
-			</table>
+			<label>
+				<input class="checkbox_count" onchange="checkboxes()" id="checkbox1" type="checkbox">
+				Text
+			</label>
+			<label>
+				<input class="checkbox_count" onchange="checkboxes()" id="checkbox2" type="checkbox">
+				Pass
+			</label>
+			<label>				
+				<input class="checkbox_count" onchange="checkboxes()" id="checkbox3" type="checkbox">			
+				Radio
+			</label>
+			<label>
+				<input class="checkbox_count" onchange="checkboxes()" id="checkbox4" type="checkbox">
+				Textarea
+			</label>
+			<label>
+				<input class="checkbox_count" onchange="checkboxes()" id="checkbox5" type="checkbox">
+				Select
+			</label>
+			<label>
+				<input onchange="toggle(); checkboxes()" id="checkbox6" type="checkbox">
+				<span id="selectAll">Select All</span>
+			</label>                
             <label for="form_name">Название</label>
             <input id="form_name" type="text" pattern=".{6,}" required>
             <div class="creation_buttons">
-            <button type="button" class="minor_button" id="restart" onclick="reset(); checkboxes(); return false">Сбросить</button>
+            <button type="button" class="minor_button" id="restart" onclick="resetForm(); checkboxes(); return false">Сбросить</button>
             <button type="button" class="minor_button" id="create" onclick="creator(); return false">Создать</button>
             </div>
         </form>

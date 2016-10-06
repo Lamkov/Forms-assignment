@@ -1,8 +1,10 @@
-var newInterval;
+var newInterval,
+	modalIsOpen = false;
 
 function openModal() {	
 	add();
 	startTimer();
+	modalIsOpen = true;
 }
 
 function add(){
@@ -14,6 +16,8 @@ function closeModal() {
 	document.getElementById("container-overlay").style.display = "none";	
 	document.querySelector(".view_2_main").classList.remove("open");
 	clearInterval(newInterval);
+	resetForm();
+	modalIsOpen = false;
 }
 
 window.onload = function(){
@@ -40,7 +44,7 @@ function startTimer() {
 
 		if (--timer < 0) {
 			timer = duration;
-            reset();
+            resetForm();
             checkboxes();
             closeModal();
 		}
@@ -49,7 +53,7 @@ function startTimer() {
 
 function checkboxes(){
     var inputElems = document.getElementsByClassName("checkbox_count");
-        count = 0;
+        count = 0;	
 
     for (var i=0; i<inputElems.length; i++) {
         if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
@@ -58,55 +62,71 @@ function checkboxes(){
         document.getElementById("quantity").innerHTML = count;
     }}
 
-function reset() {
+function resetForm() {
     document.getElementById("basic_form").reset();
+	document.getElementById("selectAll").innerHTML = "Select All";
+}
+function clearname(){
+	document.getElementById("formName").innerHTML = "";
+}
 
-}
 function toggle() {
-    var allChecked = document.getElementsByClassName("checkbox_count");
-    for (i = 0; i < allChecked.length; i++){
-        allChecked[i].checked = true ;
+    var allChecked = document.getElementsByClassName("checkbox_count"),
+		selectControl  = document.getElementById("selectAll");	
+	
+    for (i = 0; i < allChecked.length; i++){		
+		allChecked[i].checked = (selectControl .innerHTML == "Select All") ? 'checked' : '';
+	}
+	selectControl .innerHTML = (selectControl.innerHTML == "Select All") ? "Unselect All" : 'Select All';
+	
 }
-}
+
 function creator() {
+	var formValid = false;
     var formName = document.getElementById("form_name").value;
     var inputElm = document.getElementsByClassName("checkbox_count");
     var isChecked = false;
-    var validationInfo = /[@#]+/;
+    var validationInfo = /[#@]{1}/;
     if(validationInfo.test(formName)){
-	for (var i=0; i<inputElm.length; i++) {
-		if (inputElm[i].type === "checkbox" && inputElm[i].checked === true){
-			var chosen = inputElm[i].id;
-			switch (chosen) {
-				case "checkbox1":
-					var First = document.getElementById("form1").cloneNode(true);
-					document.getElementById("selection_area").appendChild(First);
-                    break;
-				case "checkbox2":
-					var Second = document.getElementById("form2").cloneNode(true);
-					document.getElementById("selection_area").appendChild(Second);
-                    break;
-				case "checkbox3":
-					var Third = document.getElementById("form3").cloneNode(true);
-					document.getElementById("selection_area").appendChild(Third);
-                    break;
-				case "checkbox4":
-					var Fouth = document.getElementById("form4").cloneNode(true);
-					document.getElementById("selection_area").appendChild(Fouth);
-                    break;
-				case "checkbox5":
-					var Fifth = document.getElementById("form5").cloneNode(true);
-					document.getElementById("selection_area").appendChild(Fifth);
-                    break;
-				default:
-
+		for (var i=0; i<inputElm.length; i++) {
+			if (inputElm[i].type === "checkbox" && inputElm[i].checked === true){
+				var chosen = inputElm[i].id;
+				switch (chosen) {
+					case "checkbox1":
+						var First = document.getElementById("form1").cloneNode(true);
+						document.getElementById("selection_area").appendChild(First);
+						break;
+					case "checkbox2":
+						var Second = document.getElementById("form2").cloneNode(true);
+						document.getElementById("selection_area").appendChild(Second);
+						break;
+					case "checkbox3":
+						var Third = document.getElementById("form3").cloneNode(true);
+						document.getElementById("selection_area").appendChild(Third);
+						break;
+					case "checkbox4":
+						var Fouth = document.getElementById("form4").cloneNode(true);
+						document.getElementById("selection_area").appendChild(Fouth);
+						break;
+					case "checkbox5":
+						var Fifth = document.getElementById("form5").cloneNode(true);
+						document.getElementById("selection_area").appendChild(Fifth);
+						break;
+					default:
+				}			
+				formValid = true;
 			}
-
-		}
-	}
-    closeModal();
-    reset();
-    checkboxes();
+			
+			document.getElementById("formName").innerHTML =  formName;
+		}	
+		
+		if (formValid) {
+			closeModal();
+			resetForm();
+			checkboxes();
+		} else {
+			alert('Please check any option');
+		}			
     }
     else {
         alert("any letters, # and @ are obligatory");
@@ -114,5 +134,17 @@ function creator() {
 }
 function cleaner(){
     document.getElementById("selection_area").innerHTML = ""
-    }
+}
 
+
+window.onkeydown = window.onkeyup = window.onkeypress = handle;
+
+function handle(e) {
+	keycode = e.keyCode || e.which;
+	
+	if (keycode == '27' &&	modalIsOpen) {
+		closeModal();
+		resetForm();
+		checkboxes();
+	}
+}
